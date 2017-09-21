@@ -1,0 +1,26 @@
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<body>
+<t3>我是一个商品</t3><p/>
+<input type="text" id="deeplink" value="product-id=123;user-id=4567" style="display:none">
+</input>
+<button class="btn" data-clipboard-target="#deeplink" data-clipboard-action="copy" >从app中打开</button>
+<script src="clipboard.min.js"></script>
+<script>
+    var clipboard = new Clipboard('.btn', {
+    	text: function() {
+            return deeplink.value;
+        }
+    });
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+</body>
+</html>
